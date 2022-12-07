@@ -44,6 +44,7 @@ class G1:  # .. Global Functions
 
 class G2: # .. Global Variables
     # // System
+    DMODE = 1 # DEBUG Mode. 0 == No Debug, 1 == Basic Debug, 2 == Full Debug
     OS = G1.SystemOS() # .. OS Name, expressed as integer
     GS = G1.GlobalSlash(OS) # .. OS Global Slash, '/' or '\'
     MPath = G1.MainPath() # .. Filepath of Executable
@@ -104,10 +105,10 @@ class G3: # .. Global Messages and Errors
 class D: # .. Debug Class
     def Dprint(MainVal,valEM,MsgLst,ext):
         if MainVal == (len(MsgLst)-1):
-            print(G3.ERR[valEM]) # .... Print Error Values
-            exit()
+            print(G3.ERR[valEM]) # .... Prints Fatal Error Values
+            exit() # .... Closes program, as any ERROR in this category should stop the Program
         else:
-            print(G3.MSG[MsgLst[0]],G3.MSG[MsgLst[MainVal+1]],ext) # .... Print based on the
+            print(G3.MSG[MsgLst[0]],G3.MSG[MsgLst[MainVal+1]],ext) # .... Prints first Message in selected available Dictionary items, then the Main Message value, and optional external Message
     def DEBUG1(list,section): # .... Standard Debug Function
         print("==========",section,"SRT","==========")
         for i in list:
@@ -140,4 +141,4 @@ class Run:
 
 # ========== Run Program END ==========
 
-Run.TestRun()
+Run.MainRun()
